@@ -15,7 +15,7 @@
 
 ## Структура проекта
 
-telco_project/
+```telco_project/
 ├── data/
 │   ├── processed/
 │   └── raw/
@@ -38,7 +38,7 @@ telco_project/
 │   ├── test_preprocessing.py
 │   ├── test_save_model.py
 │   └── test_predict.py
-
+```
 
 ## Автор
 Кулакова Валентина Валерьевна - студентка УрФУ направления "Инженерия машинного обучения"
