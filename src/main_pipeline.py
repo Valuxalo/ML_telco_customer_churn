@@ -17,17 +17,12 @@ class MLPipeline:
     def run_full_pipeline(self):
         
         self.data = load_data(load_path=None, raw_folder=self.raw_folder)
-        print('загрузили данные')
         self.train, self.val, self.test = process_all_files(self.raw_folder, self.processed_folder)
-        print('обработали данные')
         self.model = train_model(self.train, self.val)
-        print('обучили модель')
         if self.model is not None:
             predict(self.model, self.test)
-            print('предсказали на тесте')
         save_model(model=self.model, name=self.name_model)
-        print('сохранили модель')    
-        print("✅ Pipeline выполнен успешно!")
+        print("Pipeline выполнен успешно!")
     
 
 # Использование одной командой
