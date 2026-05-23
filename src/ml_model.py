@@ -3,12 +3,15 @@ import numpy as np
 
 from catboost import CatBoostClassifier
 
-def train_model(X_train, y_train, X_val=None, y_val=None):
+def train_model(df_train, df_val):
     categorical = ['Contract', 'Device Protection Plan', 'Gender', 'Internet Service', 'Multiple Lines', 'Offer', 
               'Online Backup', 'Online Security', 'Paperless Billing', 'Partner',
               'Payment Method', 'Premium Tech Support', 'Streaming TV', 'Total Refunds',
               'Number of Dependents', 'Total Extra Data Charges']
-    
+    X_train = df_train.drop(columns=['Churn'])
+    y_train = df_train['Churn']
+    X_val = df_val.drop(columns=['Churn'])
+    y_val = df_val['Churn']
     catboost_model = CatBoostClassifier(
             cat_features=tuple(categorical),
             random_seed=42,

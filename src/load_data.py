@@ -1,10 +1,13 @@
 import pandas as pd
 import os
 
-def load_data():
+def load_data(load_path=None, raw_folder=None):
     splits = {'train': 'train.csv', 'validation': 'validation.csv', 'test': 'test.csv'}
-    load_path = "hf://datasets/aai510-group1/telco-customer-churn/"
-    save_path = os.path.join('..', 'data', 'raw')
+    if load_path is None:
+        load_path = "hf://datasets/aai510-group1/telco-customer-churn/"
+    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    save_path = os.path.join(root_dir, 'data', raw_folder)
+    print(save_path)
     name_file = 'raw_eda_telco_customer_churn_'
     try:
         for key in splits.keys():
@@ -14,5 +17,3 @@ def load_data():
         return True
     except Exception as e:
         return e
-
-    
