@@ -1,3 +1,5 @@
+[![CI Pipeline](https://github.com/Valuxalo/ML_telco_customer_churn/actions/workflows/ci.yml/badge.svg)](https://github.com/Valuxalo/ML_telco_customer_churn/actions/workflows/ci.yml)
+
 ## Тема
 Прогнозирование оттока клиентов телекоммуникационных компаний
 
@@ -14,8 +16,17 @@
 ## Структура проекта
 
 telco_project/
+├── data/
+│   ├── processed/
+│   └── raw/
+├── notebooks/
+│   ├── EDA.ipynb
+│   ├── load_data.ipynb
+│   └── ML.ipynb
+├── artifacts/
 ├── src/
-│   ├── pipeline.py
+│   ├── __init__.py
+│   ├── main_pipeline.py
 │   ├── load_data.py
 │   ├── preprocessing.py
 │   ├── ml_model.py
@@ -23,15 +34,11 @@ telco_project/
 │   └── save_model.py
 ├── tests/
 │   ├── __init__.py
-│   ├── test_pipeline.py
 │   ├── test_load_data.py
 │   ├── test_preprocessing.py
-│   ├── test_ml_model.py
-│   ├── test_predict.py
-│   ├── conftest.py
-│   └── fixtures/
-│       ├── sample_data.csv
-│       └── sample_model.pkl
+│   ├── test_save_model.py
+│   └── test_predict.py
+
 
 ## Автор
 Кулакова Валентина Валерьевна - студентка УрФУ направления "Инженерия машинного обучения"
