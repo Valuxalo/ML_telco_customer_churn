@@ -12,6 +12,12 @@
 Это объединённые набор данных об оттоке клиентов телекоммуникационных компаний, который имеет 51 признак, описывающие разные параметры абонентов, такие как демографические и финансовые факторы, использование услуг. Объём датасета - 7000 строк. 
 
 ## Инструменты
+Pandas
+Scikit-learn
+PyTest
+Docker
+Github-Actions
+MlFlow
 
 ## Структура проекта
 
@@ -38,6 +44,20 @@
 │   ├── test_preprocessing.py
 │   ├── test_save_model.py
 │   └── test_predict.py
+```
+## Запуск
+1. Скачать Artifacts из Github-Actions и docker-compose.yml из проекта
+2. Разархивировать архив:
+```
+unzip docker-image.zip
+```
+3. Загрузить образ:
+```
+docker load -i ml-model.tar 
+```
+4. Запустить docker-compose:
+```
+docker-compose up -d
 ```
 
 ## Автор
