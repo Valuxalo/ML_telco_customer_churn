@@ -27,6 +27,7 @@ class MLPipeline:
     def run_full_pipeline(self):
         mlflow.set_experiment("telco-churn-exp")
         mlflow.enable_system_metrics_logging()
+        mlflow.set_tracking_uri("file:./mlruns")
         print('Выбрана модель:', self.model_name)
         with mlflow.start_run(run_name=self.model_name):
             self.data = load_data(load_path=None, raw_folder=self.raw_folder)
