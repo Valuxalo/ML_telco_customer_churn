@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  ml-pipeline:
+    image: ml-model:latest
+    container_name: ml-model
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts

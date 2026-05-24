@@ -1,0 +1,49 @@
+ Данные (обычно слишком большие для образа)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Артефакты модели (могут быть большими)
+artifacts/*.pkl
+artifacts/*.joblib
+artifacts/*.h5
+artifacts/*.pt
+
+# Ноутбуки (не нужны в контейнере)
+notebooks/
+*.ipynb
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.env
+
+# Git
+.git/
+.gitignore
+.github/
+
+tests/
+
+# Логи и временные файлы
+*.log
+*.tmp
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

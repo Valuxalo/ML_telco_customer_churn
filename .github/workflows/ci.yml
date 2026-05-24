@@ -43,3 +43,17 @@ jobs:
           echo "Запуск тестов"
           pytest tests/ -v --cov=src
           echo "Тесты пройдены!"
+      # 3. Сборка докер-образа
+      - name: Build Docker image
+        run: |
+          docker build -t ml-model:latest .
+      # 4. Сохранение образа
+      - name: Save image to tar
+        run: |
+          docker save ml-model:latest -o ml-model.tar
+      # 5. Выгрузка из github-actions  
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-image
+          path: ml-model.tar
