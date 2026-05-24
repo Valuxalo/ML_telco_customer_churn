@@ -14,15 +14,16 @@ class MLPipeline:
         self.raw_folder = 'raw'
         self.processed_folder = 'processed'
         self.name_model = 'CatBoost'
+
     def run_full_pipeline(self):
-        
         self.data = load_data(load_path=None, raw_folder=self.raw_folder)
-        self.train, self.val, self.test = process_all_files(self.raw_folder, self.processed_folder)
-        self.model = train_model(self.train, self.val)
-        if self.model is not None:
-            predict(self.model, self.test)
-        save_model(model=self.model, name=self.name_model)
-        print("Pipeline выполнен успешно!")
+        if self.data:
+            self.train, self.val, self.test = process_all_files(self.raw_folder, self.processed_folder)
+            self.model = train_model(self.train, self.val)
+            if self.model is not None:
+                predict(self.model, self.test)
+            save_model(model=self.model, name=self.name_model)
+            print("Pipeline выполнен успешно!")
     
 
 # Использование одной командой

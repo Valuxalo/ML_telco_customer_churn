@@ -19,7 +19,8 @@ def train_model(df_train, df_val):
             thread_count=-1,
             auto_class_weights='Balanced',
             early_stopping_rounds=50,
-            eval_metric='Recall'
+            eval_metric='Recall',
+            allow_writing_files=False
         )
 
     catboost_model.fit(X_train, y_train, 
