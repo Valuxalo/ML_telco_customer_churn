@@ -64,7 +64,7 @@ def process_all_files(raw_folder='raw', processed_folder='processed'):
     
     pipeline_data = preprocessing()  
     for filename in all_files:
-        print(f"\nОбработка: {filename}")
+        print(f"Обработка: {filename}")
         # Полный путь к файлу
         file_path = os.path.join(load_path, filename)
         
