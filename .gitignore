@@ -1,0 +1,13 @@
+data/raw/*.csv
+data/processed/*.csv
+artifacts/*.pkl
+artifacts/*.txt
+
+__pycache__/
+*.pyc
+
+venv/
+
+.ipynb_checkpoints/
+
+.DS_Store
