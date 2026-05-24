@@ -50,7 +50,7 @@ def preprocessing():
 
     pipeline_data = Pipeline([
         ('drop_columns', drop_transformer),
-        ('log_transform', fill_na_transformer),
+        ('fill_na_transform', fill_na_transformer),
         ('create_features', to_bin_transformer),
     ])
     

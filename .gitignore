@@ -2,7 +2,7 @@ data/raw/*.csv
 data/processed/*.csv
 artifacts/*.pkl
 artifacts/*.txt
-
+mlartifacts/
 __pycache__/
 *.pyc
 

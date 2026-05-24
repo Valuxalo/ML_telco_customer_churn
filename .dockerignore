@@ -9,6 +9,7 @@ artifacts/*.pkl
 artifacts/*.joblib
 artifacts/*.h5
 artifacts/*.pt
+mlartifacts/
 
 # Ноутбуки (не нужны в контейнере)
 notebooks/

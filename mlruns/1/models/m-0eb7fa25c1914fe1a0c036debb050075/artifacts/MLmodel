@@ -1,0 +1,23 @@
+artifact_path: /home/vvk/python/Auto_ML/telco_project/mlruns/1/models/m-0eb7fa25c1914fe1a0c036debb050075/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-0eb7fa25c1914fe1a0c036debb050075
+model_size_bytes: 4317
+model_uuid: m-0eb7fa25c1914fe1a0c036debb050075
+prompts: null
+run_id: a492e3ece02d457e99dd2e201a3ca036
+utc_time_created: '2026-05-24 15:30:17.739236'

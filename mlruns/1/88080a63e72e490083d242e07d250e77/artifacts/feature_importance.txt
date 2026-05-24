@@ -1,0 +1,12 @@
+Топ-10 важных признаков:
+                               feature  importance
+               num__Satisfaction Score    0.503713
+                cat__Contract_Two Year    0.083972
+                 num__Tenure in Months    0.065121
+      num__Total Long Distance Charges    0.046261
+           cat__Number of Dependents_1    0.038177
+          num__Avg Monthly GB Download    0.034976
+                cat__Contract_One Year    0.033354
+                              num__Age    0.027429
+                             num__CLTV    0.022283
+num__Avg Monthly Long Distance Charges    0.021957

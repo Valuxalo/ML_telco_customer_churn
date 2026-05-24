@@ -1,0 +1,22 @@
+artifact_path: /home/vvk/python/Auto_ML/telco_project/mlruns/1/models/m-d18d81484cee40ac9680acf44430b727/artifacts
+flavors:
+  catboost:
+    catboost_version: 1.2.10
+    code: null
+    data: model.cb
+    model_type: CatBoostClassifier
+    save_format: cbm
+  python_function:
+    data: model.cb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.catboost
+    python_version: 3.12.3
+mlflow_version: 3.12.0
+model_id: m-d18d81484cee40ac9680acf44430b727
+model_size_bytes: 20600
+model_uuid: m-d18d81484cee40ac9680acf44430b727
+prompts: null
+run_id: bbc21198194d4a23b09494217799ecf6
+utc_time_created: '2026-05-24 15:56:23.975846'
