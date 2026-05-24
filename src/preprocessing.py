@@ -30,11 +30,16 @@ def fill_na(X):
 def to_bin(X):
     X = X.copy()
     columns_to_bin = ['Offer', 'Number of Dependents', 'Total Extra Data Charges', 'Total Refunds']
+    
     for col in columns_to_bin:
-        if X[col].dtype == 'object' or X[col].dtype.name == 'category':
-            X[col] = (X[col] != '0').astype(int)
-        else:
+        if pd.api.types.is_numeric_dtype(X[col]):
             X[col] = (X[col] > 0).astype(int)
+        else:
+            X[col] = (
+                X[col]
+                .astype(str)
+                .ne('0')
+            ).astype(int)
     return X
 
 
@@ -58,27 +63,26 @@ def process_all_files(raw_folder='raw', processed_folder='processed'):
     save_path = os.path.join(root_dir, 'data', processed_folder)
     # Получаем все файлы из папки raw
     all_files = [f for f in os.listdir(load_path) 
-                 if os.path.isfile(os.path.join(load_path, f))]
+                 if os.path.isfile(os.path.join(load_path, f)) and f.endswith(".csv")]
     
     print(f"Найдено файлов: {len(all_files)}")
     
     pipeline_data = preprocessing()  
     for filename in all_files:
-        if filename.endswith(".csv"):
-            print(f"Обработка: {filename}")
-            # Полный путь к файлу
-            file_path = os.path.join(load_path, filename)
+        print(f"Обработка: {filename}")
+        # Полный путь к файлу
+        file_path = os.path.join(load_path, filename)
             
-            data = pd.read_csv(file_path)
-            if 'train' in filename:
-                X_train_processed = pipeline_data.fit_transform(data)
-                X_train_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_train.csv'), index=False)
-            elif 'validation' in filename:
-                X_val_processed = pipeline_data.fit_transform(data)
-                X_val_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_val.csv'), index=False)
-            elif 'test' in filename:
-                X_test_processed = pipeline_data.fit_transform(data)
-                X_test_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_test.csv'), index=False)
+        data = pd.read_csv(file_path)
+        if 'train' in filename:
+            X_train_processed = pipeline_data.fit_transform(data)
+            X_train_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_train.csv'), index=False)
+        elif 'validation' in filename:
+            X_val_processed = pipeline_data.transform(data)
+            X_val_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_val.csv'), index=False)
+        elif 'test' in filename:
+            X_test_processed = pipeline_data.transform(data)
+            X_test_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_test.csv'), index=False)
     return X_train_processed, X_val_processed, X_test_processed
 
 
