@@ -61,6 +61,7 @@ def process_all_files(raw_folder='raw', processed_folder='processed'):
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     load_path = os.path.join(root_dir, 'data', raw_folder)
     save_path = os.path.join(root_dir, 'data', processed_folder)
+    os.makedirs(save_path, exist_ok=True)
     # Получаем все файлы из папки raw
     all_files = [f for f in os.listdir(load_path) 
                  if os.path.isfile(os.path.join(load_path, f)) and f.endswith(".csv")]
