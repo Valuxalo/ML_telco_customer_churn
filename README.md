@@ -45,7 +45,7 @@
 │   ├── test_save_model.py
 │   └── test_predict.py
 ```
-## Запуск
+## Запуск docker
 1. Скачать Artifacts из Github-Actions и docker-compose.yml из проекта
 2. Разархивировать архив:
 ```
@@ -58,6 +58,22 @@ docker load -i ml-model.tar
 4. Запустить docker-compose:
 ```
 docker-compose up -d
+```
+
+## Запуск Mlflow
+1. Скачать весь проект
+2. В .env выбрать модель
+3. Запустить mlflow:
+```
+mlflow server \
+--backend-store-uri sqlite:///mlflow.db \
+--default-artifact-root ./mlruns \
+--host 127.0.0.1 \
+--port 5000
+```
+4. В другому командном окне запустить основной пайплайн:
+```
+python ./src/main_pipeline.py
 ```
 
 ## Автор

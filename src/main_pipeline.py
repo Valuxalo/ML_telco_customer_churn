@@ -8,12 +8,38 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 import shutil
+import requests
+from mlflow.tracking import MlflowClient
 
 load_dotenv()
 
-tracking_uri = os.getenv("MLFLOW_TRACKING_URI")
-if tracking_uri:
-    mlflow.set_tracking_uri(tracking_uri)
+
+REMOTE_URI = "http://127.0.0.1:5000"
+LOCAL_URI = "./mlruns"
+
+def setup_mlflow():
+    try:
+        # Проверяем доступность сервера
+        response = requests.get(f"{REMOTE_URI}/health", timeout=2)
+
+        if response.status_code == 200:
+            mlflow.set_tracking_uri(REMOTE_URI)
+
+            # дополнительная проверка API
+            client = MlflowClient()
+            client.search_experiments()
+
+            print(f"MLflow server найден: {REMOTE_URI}")
+            return "remote"
+
+    except Exception as e:
+        print(f"MLflow server недоступен: {e}")
+
+    # fallback на локальный storage
+    mlflow.set_tracking_uri(LOCAL_URI)
+
+    print("Используется локальный MLflow")
+    return "local"
 
 class MLPipeline:
     def __init__(self):
@@ -27,11 +53,11 @@ class MLPipeline:
         self.name_model = 'CatBoost'
         self.model_name = os.getenv("MODEL_NAME")
     def run_full_pipeline(self):
-
+        mode = setup_mlflow()
         mlruns_path = Path("./mlruns")
         if mlruns_path.exists():
             shutil.rmtree(mlruns_path)
-        mlflow.set_tracking_uri("file:./mlruns")
+
         mlflow.set_experiment("telco-churn-exp")
         mlflow.enable_system_metrics_logging()
 

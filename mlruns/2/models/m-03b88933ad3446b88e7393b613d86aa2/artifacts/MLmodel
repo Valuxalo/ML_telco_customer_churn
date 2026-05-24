@@ -1,4 +1,4 @@
-artifact_path: /home/vvk/python/Auto_ML/telco_project/mlruns/1/models/m-d18d81484cee40ac9680acf44430b727/artifacts
+artifact_path: /home/vvk/python/Auto_ML/telco_project/mlruns/2/models/m-03b88933ad3446b88e7393b613d86aa2/artifacts
 flavors:
   catboost:
     catboost_version: 1.2.10
@@ -14,9 +14,9 @@ flavors:
     loader_module: mlflow.catboost
     python_version: 3.12.3
 mlflow_version: 3.12.0
-model_id: m-d18d81484cee40ac9680acf44430b727
+model_id: m-03b88933ad3446b88e7393b613d86aa2
 model_size_bytes: 20600
-model_uuid: m-d18d81484cee40ac9680acf44430b727
+model_uuid: m-03b88933ad3446b88e7393b613d86aa2
 prompts: null
-run_id: bbc21198194d4a23b09494217799ecf6
-utc_time_created: '2026-05-24 15:56:23.975846'
+run_id: e272f10a73ab4e58928af60201dbccf9
+utc_time_created: '2026-05-24 17:32:09.427987'
