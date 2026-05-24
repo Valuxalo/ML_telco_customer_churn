@@ -6,6 +6,8 @@ from preprocessing import process_all_files
 import mlflow
 import os
 from dotenv import load_dotenv
+from pathlib import Path
+import shutil
 
 load_dotenv()
 
@@ -25,9 +27,14 @@ class MLPipeline:
         self.name_model = 'CatBoost'
         self.model_name = os.getenv("MODEL_NAME")
     def run_full_pipeline(self):
+
+        mlruns_path = Path("./mlruns")
+        if mlruns_path.exists():
+            shutil.rmtree(mlruns_path)
+        mlflow.set_tracking_uri("file:./mlruns")
         mlflow.set_experiment("telco-churn-exp")
         mlflow.enable_system_metrics_logging()
-        mlflow.set_tracking_uri("file:./mlruns")
+
         print('Выбрана модель:', self.model_name)
         with mlflow.start_run(run_name=self.model_name):
             self.data = load_data(load_path=None, raw_folder=self.raw_folder)
