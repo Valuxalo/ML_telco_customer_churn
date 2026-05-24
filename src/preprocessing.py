@@ -63,25 +63,23 @@ def process_all_files(raw_folder='raw', processed_folder='processed'):
     print(f"Найдено файлов: {len(all_files)}")
     
     pipeline_data = preprocessing()  
-    try:
-        for filename in all_files:
-            print(f"\nОбработка: {filename}")
-            # Полный путь к файлу
-            file_path = os.path.join(load_path, filename)
-            
-            data = pd.read_csv(file_path)
-            if 'train' in filename:
-                X_train_processed = pipeline_data.fit_transform(data)
-                X_train_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_train.csv'), index=False)
-            elif 'validation' in filename:
-                X_val_processed = pipeline_data.fit_transform(data)
-                X_val_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_val.csv'), index=False)
-            elif 'test' in filename:
-                X_test_processed = pipeline_data.fit_transform(data)
-                X_test_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_test.csv'), index=False)
-        return X_train_processed, X_val_processed, X_test_processed
-    except Exception as e:
-        return e
+    for filename in all_files:
+        print(f"\nОбработка: {filename}")
+        # Полный путь к файлу
+        file_path = os.path.join(load_path, filename)
+        
+        data = pd.read_csv(file_path)
+        if 'train' in filename:
+            X_train_processed = pipeline_data.fit_transform(data)
+            X_train_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_train.csv'), index=False)
+        elif 'validation' in filename:
+            X_val_processed = pipeline_data.fit_transform(data)
+            X_val_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_val.csv'), index=False)
+        elif 'test' in filename:
+            X_test_processed = pipeline_data.fit_transform(data)
+            X_test_processed.to_csv(os.path.join(save_path, 'eda_telco_customer_churn_test.csv'), index=False)
+    return X_train_processed, X_val_processed, X_test_processed
+
 
         
 
