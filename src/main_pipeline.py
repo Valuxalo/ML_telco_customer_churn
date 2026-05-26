@@ -52,6 +52,7 @@ class MLPipeline:
         self.processed_folder = 'processed'
         self.name_model = 'CatBoost'
         self.model_name = os.getenv("MODEL_NAME")
+        
     def run_full_pipeline(self):
         mode = setup_mlflow()
         mlruns_path = Path("./mlruns")
