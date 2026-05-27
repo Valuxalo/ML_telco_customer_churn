@@ -67,7 +67,11 @@ def train_model(df_train, df_val):
         "LogisticRegression": Pipeline([
             ("preprocessing", preprocessor),
             ("model", LogisticRegression(
-            random_state=42
+                C=1,
+                l1_ratio=1,
+                max_iter=1000,
+                solver='saga',
+                random_state=42
         ))
         ]),
     }
