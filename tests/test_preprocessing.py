@@ -7,7 +7,6 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent / 'src'))
 
 def test_preprocessing():
-    """Тест: preprocessing возвращает DataFrame"""
     root = Path(__file__).parent.parent
     processed_folder = root / 'data' / 'processed'
     
