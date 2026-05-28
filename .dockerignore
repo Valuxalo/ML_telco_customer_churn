@@ -5,10 +5,7 @@ data/processed/*
 !data/processed/.gitkeep
 
 # Артефакты модели (могут быть большими)
-artifacts/*.pkl
-artifacts/*.joblib
-artifacts/*.h5
-artifacts/*.pt
+artifacts/
 mlartifacts/
 
 # Ноутбуки (не нужны в контейнере)
